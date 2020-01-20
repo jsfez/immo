@@ -1,0 +1,8 @@
+endpoint: http://localhost:4466
+datamodel:
+  - src/server/prisma/datamodels/Property.graphql
+  - src/server/prisma/datamodels/Investment.graphql
+  - src/server/prisma/datamodels/User.graphql
+generate:
+  - generator: javascript-client
+    output: src/server/prisma/generated/prisma-client/

@@ -1,0 +1,30 @@
+type Investment {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  property: Property! @relation(link: INLINE)
+
+  advantages: String
+  condominiumFees: Float
+  csgTax: Float
+  description: String
+  disadvantages: String
+  homeownerInsurance: Float
+  loanAmount: Float
+  loanInsuranceRate: Float
+  loanLender: String
+  loanMensualRepaymentAmount: Float
+  loanMonthsOfdeferredReimbursement: Int
+  loanRate: Float
+  monthlyGain: Float
+  name: String
+  notaryFees: Float
+  numberOfMonths: Int
+  paybackperiod: Int
+  personalContribution: Float
+  personnalContribution: Float
+  propertyTax: Float
+  realEstatePrice: Float
+  renovationsPrice: Float
+  taxes: Float
+}

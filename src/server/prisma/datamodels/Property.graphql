@@ -1,0 +1,20 @@
+type Property {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  author: User! @relation(link: INLINE)
+  name: String!
+
+  address: String
+  advantages: String
+  area: String
+  bathroomsCount: Int
+  bedroomsCount: Int
+  city: String
+  disadvantages: String
+  floor: Int
+  investments: [Investment!]
+  parking: Int
+  surface: Float
+  zipCode: String
+}

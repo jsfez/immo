@@ -1,6 +1,6 @@
 # Immo - Suivi d'opportunités immobilières
 
-Conserver et suivre, noter et comparer vos opportunitées immobilières.
+Suivre, noter et comparer ses opportunités immobilières.
 
 ## Setup dev environment
 
@@ -20,6 +20,12 @@ yarn
 
 ```
 yarn dev:server
+```
+
+### 4. Run the client
+
+```
+yarn dev:client
 ```
 
 ## Launch tests

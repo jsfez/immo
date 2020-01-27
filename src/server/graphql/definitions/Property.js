@@ -39,7 +39,7 @@ export const typeDefs = gql`
 
   extend type Query {
     property(id: ID!): Property!
-    properties(userId: String!): [Property!]
+    properties: [Property!]
   }
 
   extend type Mutation {
@@ -58,15 +58,16 @@ export const resolvers = {
     property: async (rootObj, { id }, context) => {
       return context.prisma.properties({ id })
     },
-    properties: async (rootObj, { userId }, context) => {
-      return context.prisma.properties({ author: userId })
+    properties: async (rootObj, props, context) => {
+      // const userId = getUserId(context)
+      // return context.prisma.properties({ author: userId })
+      return context.prisma.properties()
     },
   },
   Mutation: {
-    createProperty: async (rootObj, { newProperty }, context, info) => {
+    createProperty: async (rootObj, { newProperty }, context) => {
+      console.log(newProperty)
       const userId = getUserId(context)
-      console.log({ userId })
-
       return context.prisma.createProperty({
         ...newProperty,
         author: { connect: { id: userId } },

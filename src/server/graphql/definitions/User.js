@@ -66,7 +66,7 @@ export const resolvers = {
       if (!validPassword) throw new Error('Invalid password')
 
       const token = jwt.sign({ userId: user.id }, APP_SECRET)
-      return { token, user }
+      return { user, token }
     },
   },
 }

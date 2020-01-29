@@ -1,6 +1,6 @@
 import styled from '@xstyled/styled-components'
 
-const Button = styled.button`
+const Button = styled.buttonBox`
   border-radius: 3;
   border: 2;
   border-color: primary;

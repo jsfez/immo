@@ -1,14 +1,14 @@
 import React from 'react'
-import ThemeProvider from './containers/Theme'
-import Home from './containers/Home'
-import PropertyForm from './containers/PropertyForm'
-import ApolloProvider from './components/Apollo'
-import Header from './components/Header'
-import { GlobalStyle } from './components/GlobalStyle'
 import { Helmet } from 'react-helmet'
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
 import * as routePaths from './routePaths'
-import { PageContainer } from './components/PageContainer'
+import ApolloProvider from './components/Apollo'
+import GlobalStyle from './components/GlobalStyle'
+import Home from './containers/Home'
+import Login from './containers/Login'
+import PropertyForm from './containers/PropertyForm'
+import Register from './containers/Register'
+import ThemeProvider from './components/Theme'
 
 function App() {
   // const finalAppReturn = (
@@ -34,17 +34,23 @@ function App() {
           <>
             <Helmet defaultTitle="Immo" titleTemplate="Immo | %s"></Helmet>
             <GlobalStyle />
-            <Header />
-            <PageContainer>
-              <Switch>
-                <Route exact path={routePaths.home()}>
-                  <Home />
-                </Route>
-                <Route path={routePaths.addProperty()}>
-                  <PropertyForm />
-                </Route>
-              </Switch>
-            </PageContainer>
+            <Switch>
+              <Route exact path={routePaths.getHomePath()}>
+                <Home />
+              </Route>
+              <Route path={routePaths.getNewPropertyPath()}>
+                <PropertyForm />
+              </Route>
+              <Route path={routePaths.getRegisterPath()}>
+                <Register />
+              </Route>
+              <Route path={routePaths.getLoginPath()}>
+                <Login />
+              </Route>
+              <Route path={routePaths.getLogoutPath()}>
+                <Home logout />
+              </Route>
+            </Switch>
           </>
         </ThemeProvider>
       </ApolloProvider>

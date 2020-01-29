@@ -1,2 +1,5 @@
-export const home = () => '/'
-export const addProperty = () => '/property/add'
+export const getHomePath = () => '/'
+export const getNewPropertyPath = () => '/property/add'
+export const getLoginPath = () => '/login'
+export const getLogoutPath = () => '/logout'
+export const getRegisterPath = () => '/signup'

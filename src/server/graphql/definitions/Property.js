@@ -66,7 +66,6 @@ export const resolvers = {
   },
   Mutation: {
     createProperty: async (rootObj, { newProperty }, context) => {
-      console.log(newProperty)
       const userId = getUserId(context)
       return context.prisma.createProperty({
         ...newProperty,

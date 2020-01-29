@@ -11,3 +11,17 @@ export function getUserId(context) {
 
   throw new Error('Not authenticated')
 }
+
+function generateCode(codeLen) {
+  return Math.random()
+    .toString(36)
+    .substring(2, codeLen + 2)
+}
+
+function generateToken() {
+  return generateCode(13) + generateCode(13)
+}
+
+export function generateSalt() {
+  return generateToken()
+}

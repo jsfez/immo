@@ -1,6 +1,6 @@
 import { createGlobalStyle, th } from '@xstyled/styled-components'
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   html, body {
     margin: 0;
     font-family: sans-serif;
@@ -23,3 +23,5 @@ export const GlobalStyle = createGlobalStyle`
     font-family: sans-serif;
   }
 `
+
+export default GlobalStyle

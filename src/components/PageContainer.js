@@ -8,6 +8,6 @@ export const Container = styled.box`
   margin: 0 auto;
 `
 
-export function PageContainer(props) {
+export default function PageContainer(props) {
   return <Container mt={{ xs: 25, md: 34 }} mb={60} {...props} />
 }

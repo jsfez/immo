@@ -1,12 +1,21 @@
 import React from 'react'
-import styled from '@xstyled/styled-components'
+import styled, { css } from '@xstyled/styled-components'
 
 const InnerAlert = styled.box`
-  background-color: green;
+  ${p =>
+    p.variant === 'danger'
+      ? css`
+          background-color: danger;
+        `
+      : css`
+          background-color: success;
+        `}
   text-align: center;
   position: fixed;
-  top: 60;
+  top: 30;
+  right: 30;
   z-index: 150;
+  padding: 1 3;
 `
 
 export const Alert = React.forwardRef((props, ref) => {

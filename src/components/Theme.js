@@ -38,12 +38,22 @@ const theme = {
     xs: 2,
   },
   texts: {
+    h1: {
+      defaultAs: 'h1',
+      style: css`
+        font-size: 24;
+        padding-top: 10;
+        margin-bottom: 2;
+        color: red;
+      `,
+    },
     h2: {
       defaultAs: 'h2',
       style: css`
         font-size: 22;
         padding-top: 10;
-        color: red;
+        margin-bottom: 2;
+        color: blue;
       `,
     },
     h3: {
@@ -51,7 +61,8 @@ const theme = {
       style: css`
         font-size: 20;
         padding-top: 10;
-        color: red;
+        margin-bottom: 2;
+        color: green;
       `,
     },
     paragraph: {

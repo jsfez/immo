@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 import * as routePaths from '../routePaths'
 import PageContainer from '../components/PageContainer'
 import Logo from '../images/logo-transparent.png'
-import { AUTH_TOKEN } from '../constants'
 import { Helmet } from 'react-helmet'
+import { useUser } from '../components/Auth'
 
 const NavBar = styled.box`
   border-bottom: 1;
@@ -27,7 +27,8 @@ const NavLink = ({ to, children, ...props }) => (
 )
 
 export default function Header({ children, ...props }) {
-  const authToken = localStorage.getItem(AUTH_TOKEN)
+  const { user } = useUser()
+
   return (
     <>
       {children && <Helmet>{children}</Helmet>}
@@ -46,8 +47,11 @@ export default function Header({ children, ...props }) {
             </Box>
 
             <Box justifyContent="space-around" display="flex" mr={-3}>
-              {authToken ? (
-                <NavLink to={routePaths.getLogoutPath()}>Déconnexion</NavLink>
+              {user ? (
+                <>
+                  <p>{user.name}</p>
+                  <NavLink to={routePaths.getLogoutPath()}>Déconnexion</NavLink>
+                </>
               ) : (
                 <>
                   <NavLink to={routePaths.getLoginPath()}>Connexion</NavLink>

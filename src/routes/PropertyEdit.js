@@ -3,14 +3,13 @@ import Header from '../containers/Header'
 import PageContainer from '../components/PageContainer'
 import PropertyForm from '../containers/PropertyForm'
 import gql from 'graphql-tag'
-// import { useHistory } from 'react-router'
 import { useMutation } from 'react-apollo'
 import {
   DEFAULT_FORM_ERROR_MESSAGE,
   FORM_ERROR,
   trimStringValues,
 } from '../components/Form'
-import { Text } from '../components/Text'
+import PrimaryTitle from '../components/PrimaryTitle'
 import { useParams } from 'react-router'
 import { Query } from '../components/Apollo'
 
@@ -78,9 +77,7 @@ export default function PropertyAdd(data) {
     <>
       <Header>Modifier opportunité</Header>
       <PageContainer>
-        <Text variant="h1" mb={2}>
-          Modifier opportunité
-        </Text>
+        <PrimaryTitle>Modifier opportunité</PrimaryTitle>
         <Query
           query={GET_PROPERTY}
           fallback={<div>Loading...</div>}

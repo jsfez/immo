@@ -3,9 +3,9 @@ import { Query } from '../components/Apollo'
 import { PropertyList } from '../components/PropertyList'
 import Header from './Header'
 import gql from 'graphql-tag'
-import { Text } from '../components/Text'
+import PrimaryTitle from '../components/PrimaryTitle'
 import PageContainer from '../components/PageContainer'
-import { AUTH_TOKEN } from '../constants'
+import { useUser } from '../components/Auth'
 
 const PROPERTIES_QUERY = gql`
   query properties {
@@ -18,14 +18,18 @@ const PROPERTIES_QUERY = gql`
 `
 
 export default function Home({ logout, ...props }) {
+  const userContext = useUser()
+
+  console.log(userContext)
   if (logout) {
-    localStorage.removeItem(AUTH_TOKEN)
+    userContext.logout()
   }
+
   return (
     <>
       <Header>Home</Header>
       <PageContainer>
-        <Text variant="h1">Home</Text>
+        <PrimaryTitle>Home</PrimaryTitle>
         <Query query={PROPERTIES_QUERY} fallback={<div>Loading...</div>}>
           {({ data }) => <PropertyList data={data} />}
         </Query>

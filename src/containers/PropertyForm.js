@@ -1,13 +1,10 @@
 import React from 'react'
 import { Form, FormErrorAlert, SubmitButton } from '../components/Form'
 import { InputField } from '../components/Field'
-import { Text } from '../components/Text'
+import { ThirdTitle } from '../components/ThirdTitle'
 import { Box } from '@xstyled/styled-components'
-import {
-  parseInt,
-  parseDecimalNumber,
-  formatDecimalNumber,
-} from '../utils/parsers'
+import { parseInt, parseDecimalNumber } from '../utils/parsers'
+import { Paragraph } from '../components/Paragraph'
 
 function PropertyForm({ property, onSubmit, submitLabel, submittingLabel }) {
   return (
@@ -32,7 +29,7 @@ function PropertyForm({ property, onSubmit, submitLabel, submittingLabel }) {
 
       <Box row mt={5}>
         <Box col={{ xs: 1, md: 1 / 2 }} mr={6}>
-          <Text variant="h3">Description</Text>
+          <ThirdTitle>Description</ThirdTitle>
 
           <InputField
             type="number"
@@ -67,7 +64,6 @@ function PropertyForm({ property, onSubmit, submitLabel, submittingLabel }) {
             label="Surface (m2)"
             name="surface"
             parse={parseDecimalNumber}
-            format={formatDecimalNumber}
             horizontal
           />
           <InputField
@@ -85,11 +81,11 @@ function PropertyForm({ property, onSubmit, submitLabel, submittingLabel }) {
         </Box>
 
         <Box col>
-          <Text variant="h3">Adresse</Text>
+          <ThirdTitle>Adresse</ThirdTitle>
           <InputField type="text" label="Quartier" name="area" horizontal />
-          <Box variant="paragraph" textAlign="center" my={2}>
+          <Paragraph textAlign="center" my={2}>
             --- ET/OU ---
-          </Box>
+          </Paragraph>
           <InputField type="text" label="Adresse" name="address" horizontal />
           <InputField type="text" label="Ville" name="City" horizontal />
           <InputField

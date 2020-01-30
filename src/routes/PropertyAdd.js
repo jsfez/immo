@@ -11,7 +11,7 @@ import {
   FORM_ERROR,
   trimStringValues,
 } from '../components/Form'
-import { Text } from '../components/Text'
+import PrimaryTitle from '../components/PrimaryTitle'
 
 const CREATE_PROPERTY = gql`
   mutation createProperty($newProperty: PropertyInput!) {
@@ -32,16 +32,20 @@ const CREATE_PROPERTY = gql`
     }
   }
 `
+function confirm(history, data) {
+  history.push(`/`)
+}
 
 export default function PropertyAdd({ data }) {
   const history = useHistory()
-  const [createProperty] = useMutation(CREATE_PROPERTY)
+  const [createProperty] = useMutation(CREATE_PROPERTY, {
+    onCompleted: data => confirm(history, data.property),
+  })
 
   async function handleSubmit(mutation, values) {
     try {
       const formattedValues = trimStringValues(values)
       mutation({ variables: { newProperty: { ...formattedValues } } })
-      history.push(`/`)
     } catch (error) {
       return { [FORM_ERROR]: error || DEFAULT_FORM_ERROR_MESSAGE }
     }
@@ -50,10 +54,8 @@ export default function PropertyAdd({ data }) {
   return (
     <>
       <Header>Nouvelle opportunité</Header>
-      <Text variant="h1" mb={2}>
-        Nouvelle opportunité
-      </Text>
       <PageContainer>
+        <PrimaryTitle>Nouvelle opportunité</PrimaryTitle>
         {!data || data.property ? (
           <PropertyForm
             onSubmit={values => handleSubmit(createProperty, values)}

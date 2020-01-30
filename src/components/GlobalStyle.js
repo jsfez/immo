@@ -3,7 +3,6 @@ import { createGlobalStyle, th } from '@xstyled/styled-components'
 const GlobalStyle = createGlobalStyle`
   html, body {
     margin: 0;
-    font-family: sans-serif;
     background-color: white;
     color: dark-blue;
     line-height: 1.4;
@@ -18,10 +17,6 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   
-
-  button {
-    font-family: sans-serif;
-  }
 `
 
 export default GlobalStyle

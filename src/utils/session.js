@@ -1,15 +1,26 @@
 import jwt from 'jsonwebtoken'
 export const APP_SECRET = 'op-prisma-graphql-project'
 
-export function getUserId(context) {
-  const Authorization = context.request.get('Authorization')
-  if (Authorization) {
-    const token = Authorization.replace('Bearer ', '')
-    const { userId } = jwt.verify(token, APP_SECRET)
-    return userId
-  }
+function getUserIdFromAuthorization(Authorization) {
+  const token = Authorization.replace('Bearer ', '')
+  const { userId } = jwt.verify(token, APP_SECRET)
+  return userId
+}
 
-  throw new Error('Not authenticated')
+export function getUserIdOrThrowError(context) {
+  const Authorization = context.request.get('Authorization')
+  if (!Authorization) {
+    throw new Error('Not authenticated')
+  }
+  return getUserIdFromAuthorization(Authorization)
+}
+
+export function getUserIdIfExist(context) {
+  const Authorization = context.request.get('Authorization')
+  if (!Authorization) {
+    return null
+  }
+  return getUserIdFromAuthorization(Authorization)
 }
 
 function generateCode(codeLen) {

@@ -2,9 +2,7 @@ import React from 'react'
 import { transparentize } from 'polished'
 import {
   ThemeProvider as BaseThemeProvider,
-  css,
   rpxTransformers,
-  up,
   th,
 } from '@xstyled/styled-components'
 
@@ -36,54 +34,6 @@ const theme = {
   radii: {
     base: 4,
     xs: 2,
-  },
-  texts: {
-    h1: {
-      defaultAs: 'h1',
-      style: css`
-        font-size: 24;
-        padding-top: 10;
-        margin-bottom: 2;
-        color: red;
-      `,
-    },
-    h2: {
-      defaultAs: 'h2',
-      style: css`
-        font-size: 22;
-        padding-top: 10;
-        margin-bottom: 2;
-        color: blue;
-      `,
-    },
-    h3: {
-      defaultAs: 'h3',
-      style: css`
-        font-size: 20;
-        padding-top: 10;
-        margin-bottom: 2;
-        color: green;
-      `,
-    },
-    paragraph: {
-      defaultAs: 'p',
-      style: css`
-        font-family: serif;
-        color: paragraph;
-        font-size: 16;
-        font-weight: light;
-        margin: 6 0;
-
-        ${up(
-          'md',
-          css`
-            font-size: 18;
-            max-width: 430;
-            margin: 20 0;
-          `,
-        )}
-      `,
-    },
   },
   transformers: {
     ...rpxTransformers,

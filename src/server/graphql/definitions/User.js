@@ -1,7 +1,11 @@
 import gql from 'graphql-tag'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { APP_SECRET } from '../../../utils/session'
+import {
+  APP_SECRET,
+  getUserIdOrThrowError,
+  getUserIdIfExist,
+} from '../../../utils/session'
 
 export const typeDefs = gql`
   type User {
@@ -17,8 +21,8 @@ export const typeDefs = gql`
   }
 
   extend type Query {
+    user: User
     users: [User!]
-    user(id: ID!): User
   }
 
   extend type Mutation {
@@ -30,15 +34,14 @@ export const typeDefs = gql`
 export const resolvers = {
   User: {
     async properties(parent, args, context) {
-      return context.prisma.user({ id: parent.id }).properties()
+      const id = getUserIdOrThrowError(context)
+      return context.prisma.user({ id }).properties()
     },
   },
   Query: {
-    user(rootObj, { id }, context) {
-      return context.prisma.user({ id })
-    },
-    users(rootObj, params, context) {
-      return context.prisma.users()
+    user(rootObj, params, context) {
+      const id = getUserIdIfExist(context)
+      return id && context.prisma.user({ id })
     },
   },
   Mutation: {

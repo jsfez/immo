@@ -1,7 +1,11 @@
 export const getHomePath = () => '/'
-export const getNewPropertyPath = () => '/property/add'
+
+// User paths
+export const getLoginPath = () => '/connexion'
+export const getLogoutPath = () => '/deconnexion'
+export const getRegisterPath = () => '/inscription'
+
+// Property paths
+export const getNewPropertyPath = () => '/opportunite/ajout'
 export const getEditPropertyPath = (propertyId = ':propertyId') =>
-  `/property/edit/${propertyId}`
-export const getLoginPath = () => '/login'
-export const getLogoutPath = () => '/logout'
-export const getRegisterPath = () => '/signup'
+  `/opportunite/edition/${propertyId}`

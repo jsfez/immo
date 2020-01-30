@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { getUserId } from '../../../utils/session'
+import { getUserIdOrThrowError } from '../../../utils/session'
 
 export const typeDefs = gql`
   type Property {
@@ -60,14 +60,14 @@ export const resolvers = {
       return context.prisma.property({ id })
     },
     properties: async (rootObj, props, context) => {
-      // const userId = getUserId(context)
+      // const userId = getUserIdOrThrowError(context)
       // return context.prisma.properties({ author: userId })
       return context.prisma.properties()
     },
   },
   Mutation: {
     createProperty: async (rootObj, { newProperty }, context) => {
-      const userId = getUserId(context)
+      const userId = getUserIdOrThrowError(context)
       return context.prisma.createProperty({
         ...newProperty,
         author: { connect: { id: userId } },
@@ -75,7 +75,7 @@ export const resolvers = {
     },
 
     updateProperty: async (rootObj, { propertyId, property }, context) => {
-      const userId = getUserId(context)
+      const userId = getUserIdOrThrowError(context)
       const author = await context.prisma.property({ id: propertyId }).author()
       if (!author || author.id !== userId) {
         throw new Error(`Property not found`)
@@ -92,7 +92,7 @@ export const resolvers = {
       context,
       info,
     ) => {
-      const userId = getUserId(context)
+      const userId = getUserIdOrThrowError(context)
       const investment = context.prisma.investment({
         id: investmentId,
         author: userId,

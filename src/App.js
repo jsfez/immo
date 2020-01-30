@@ -5,10 +5,10 @@ import * as routePaths from './routePaths'
 import ApolloProvider from './components/Apollo'
 import GlobalStyle from './components/GlobalStyle'
 import Home from './containers/Home'
-import Login from './containers/Login'
-import PropertyForm from './containers/PropertyForm'
-import Register from './containers/Register'
+import RegisterForm from './containers/RegisterForm'
 import ThemeProvider from './components/Theme'
+import PropertyAdd from './routes/PropertyAdd'
+import PropertyEdit from './routes/PropertyEdit'
 
 function App() {
   // const finalAppReturn = (
@@ -39,13 +39,16 @@ function App() {
                 <Home />
               </Route>
               <Route path={routePaths.getNewPropertyPath()}>
-                <PropertyForm />
+                <PropertyAdd />
+              </Route>
+              <Route path={routePaths.getEditPropertyPath()}>
+                <PropertyEdit />
               </Route>
               <Route path={routePaths.getRegisterPath()}>
-                <Register />
+                <RegisterForm />
               </Route>
               <Route path={routePaths.getLoginPath()}>
-                <Login />
+                <RegisterForm loginForm />
               </Route>
               <Route path={routePaths.getLogoutPath()}>
                 <Home logout />

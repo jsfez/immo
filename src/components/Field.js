@@ -3,26 +3,7 @@ import { useField } from 'react-final-form'
 import { Input, ErrorHint } from './Input'
 import { Label } from './Label'
 import { Box } from '@xstyled/styled-components'
-
-export function mustBeFilled(value) {
-  const errorMessage = 'Ne peut être vide'
-
-  if (typeof value === 'string') {
-    value = value.trim()
-  }
-
-  if (value === '' || value === null || value === undefined) {
-    return errorMessage
-  }
-
-  return undefined
-}
-
-export const composeValidators = (...validators) => (...args) =>
-  validators.reduce(
-    (error, validator) => error || validator(...args),
-    undefined,
-  )
+import { mustBeFilled, composeValidators } from '../utils/validators'
 
 export function InputField({
   label,
@@ -30,6 +11,8 @@ export function InputField({
   required,
   validate,
   horizontal,
+  parse,
+  format,
   id: idProp,
   ...props
 }) {
@@ -44,6 +27,8 @@ export function InputField({
   const field = useField(name, {
     type: props.type,
     validate: validators.length ? composeValidators(...validators) : undefined,
+    parse,
+    format,
   })
   const error = field.meta.touched ? field.meta.error : null
   const invalid = field.meta.touched ? field.meta.invalid : null

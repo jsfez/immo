@@ -16,6 +16,14 @@ import { Button } from './Button'
 export { FORM_ERROR }
 export { FormSpy, Field, useField, useFormState, FieldArray }
 
+export function trimStringValues(fields) {
+  return Object.keys(fields).reduce((formattedFields, fieldName) => {
+    formattedFields[fieldName] =
+      typeof value === 'string' ? fields[fieldName].trim() : fields[fieldName]
+    return formattedFields
+  }, {})
+}
+
 export function FormSuccessAlert(props) {
   const { submitSucceeded } = useFormState({
     subscription: { submitSucceeded: true },
@@ -32,7 +40,7 @@ export function FormErrorAlert(props) {
   ) : null
 }
 
-export function SubmitButton({ children, ...props }) {
+export function SubmitButton({ children, submittingLabel, ...props }) {
   const { valid, submitting } = useFormState({
     subscription: { valid: true, submitting: true },
   })
@@ -44,7 +52,7 @@ export function SubmitButton({ children, ...props }) {
       disabled={submitting}
       {...props}
     >
-      {children}
+      {submitting ? submittingLabel : children}
     </Button>
   )
 }
@@ -74,7 +82,7 @@ export const Form = React.forwardRef(
           try {
             return await onSubmit(...args)
           } catch (error) {
-            return { [FORM_ERROR]: DEFAULT_FORM_ERROR_MESSAGE }
+            return { [FORM_ERROR]: error || DEFAULT_FORM_ERROR_MESSAGE }
           }
         }}
         {...props}

@@ -8,7 +8,6 @@ import {
   useQuery as useApolloQuery,
   ApolloProvider as Apollo,
 } from '@apollo/react-hooks'
-// export { useMutation } from '@apollo/react-hooks'
 
 export function Query({ children, fallback = null, query, ...props }) {
   const { error, loading, ...others } = useApolloQuery(query, props)

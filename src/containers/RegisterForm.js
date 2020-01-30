@@ -28,33 +28,47 @@ const SIGNUP_MUTATION = gql`
   }
 `
 
-async function confirm(history, data) {
-  const token = data.signup.token
+const LOGIN_MUTATION = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        id
+      }
+    }
+  }
+`
+
+async function confirm(history, token) {
   localStorage.setItem(AUTH_TOKEN, token)
   history.push(`/`)
 }
 
-async function handleSubmit(signup, values) {
+async function handleSubmit(mutation, values) {
   try {
-    return await signup({ variables: { ...values } })
+    return await mutation({ variables: { ...values } })
   } catch (error) {
     return { [FORM_ERROR]: DEFAULT_FORM_ERROR_MESSAGE }
   }
 }
 
-function PropertyForm() {
+function RegisterForm({ loginForm = false }) {
   const history = useHistory()
   const [signup] = useMutation(SIGNUP_MUTATION, {
-    onCompleted: data => confirm(history, data),
+    onCompleted: data => confirm(history, data.signup.token),
   })
+  const [login] = useMutation(LOGIN_MUTATION, {
+    onCompleted: data => confirm(history, data.login.token),
+  })
+  const mutation = loginForm ? login : signup
 
   return (
     <>
-      <Header>Inscription</Header>
+      <Header>{loginForm ? 'Inscription' : 'Connexion'}</Header>
       <PageContainer>
-        <Text variant="h1">Inscription</Text>
+        <Text variant="h1">{loginForm ? 'Inscription' : 'Connexion'}</Text>
 
-        <Form onSubmit={values => handleSubmit(signup, values)}>
+        <Form onSubmit={values => handleSubmit(mutation, values)}>
           <Box row>
             <Box col={{ xs: 1, md: 1 / 2 }}>
               <InputField
@@ -71,25 +85,31 @@ function PropertyForm() {
                 required
                 horizontal
               />
-              <InputField
-                type="text"
-                label="Nom"
-                name="name"
-                required
-                horizontal
-              />
+              {!loginForm && (
+                <InputField
+                  type="text"
+                  label="Nom"
+                  name="name"
+                  required
+                  horizontal
+                />
+              )}
             </Box>
             <Box col></Box>
             <Box>
-              <SubmitButton mx={0}>S'inscrire</SubmitButton>
+              <SubmitButton mx={0}>
+                {loginForm ? 'Se connecter' : "S'inscrire"}
+              </SubmitButton>
             </Box>
           </Box>
           <FormErrorAlert />
-          <FormSuccessAlert>Compte créé</FormSuccessAlert>
+          <FormSuccessAlert>
+            {loginForm ? 'Vous êtes connecté' : 'Compte créé'}
+          </FormSuccessAlert>
         </Form>
       </PageContainer>
     </>
   )
 }
 
-export default PropertyForm
+export default RegisterForm

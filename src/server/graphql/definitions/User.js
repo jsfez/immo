@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { APP_SECRET } from '../../utils.js'
+import { APP_SECRET } from '../../../utils/session'
 
 export const typeDefs = gql`
   type User {

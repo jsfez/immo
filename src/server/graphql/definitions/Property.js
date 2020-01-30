@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { getUserId } from '../../utils.js'
+import { getUserId } from '../../../utils/session'
 
 export const typeDefs = gql`
   type Property {
@@ -21,7 +21,7 @@ export const typeDefs = gql`
     zipCode: String
   }
 
-  input PropertyCreate {
+  input PropertyInput {
     name: String!
 
     address: String
@@ -43,7 +43,8 @@ export const typeDefs = gql`
   }
 
   extend type Mutation {
-    createProperty(newProperty: PropertyCreate!): Property
+    createProperty(newProperty: PropertyInput!): Property
+    updateProperty(propertyId: ID!, property: PropertyInput!): Property
     addPropertyInvestment(propertyId: ID!, InvestmentId: ID!): Property!
   }
 `
@@ -56,7 +57,7 @@ export const resolvers = {
   },
   Query: {
     property: async (rootObj, { id }, context) => {
-      return context.prisma.properties({ id })
+      return context.prisma.property({ id })
     },
     properties: async (rootObj, props, context) => {
       // const userId = getUserId(context)
@@ -70,6 +71,18 @@ export const resolvers = {
       return context.prisma.createProperty({
         ...newProperty,
         author: { connect: { id: userId } },
+      })
+    },
+
+    updateProperty: async (rootObj, { propertyId, property }, context) => {
+      const userId = getUserId(context)
+      const author = await context.prisma.property({ id: propertyId }).author()
+      if (!author || author.id !== userId) {
+        throw new Error(`Property not found`)
+      }
+      return context.prisma.updateProperty({
+        data: { ...property },
+        where: { id: propertyId },
       })
     },
 
@@ -89,13 +102,8 @@ export const resolvers = {
       }
 
       return context.prisma.UpdateProperty({
-        data: {
-          investment: { connnect: { id: investment.id } },
-        },
-        where: {
-          id: propertyId,
-          author: userId,
-        },
+        data: { investment: { connnect: { id: investment.id } } },
+        where: { AND: [{ id: propertyId }, { author: userId }] },
       })
     },
   },

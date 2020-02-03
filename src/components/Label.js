@@ -3,7 +3,6 @@ import styled from '@xstyled/styled-components'
 
 const InnerLabel = styled.labelBox`
   color: ${p => p.color};
-  display: flex;
   margin-bottom: 2;
   font-weight: 600;
 `

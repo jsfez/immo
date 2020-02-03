@@ -2211,6 +2211,20 @@
   resolved "https://registry.yarnpkg.com/@sheerun/mutationobserver-shim/-/mutationobserver-shim-0.3.2.tgz#8013f2af54a2b7d735f71560ff360d3a8176a87b"
   integrity sha512-vTCdPp/T/Q3oSqwHmZ5Kpa9oI7iLtGl3RQaA/NyLHikvcrPxACkkKVr/XzkSPJWXHRhKGzVvb0urJsbMlRxi1Q==
 
+"@smooth-ui/core-sc@^11.1.5":
+  version "11.1.5"
+  resolved "https://registry.yarnpkg.com/@smooth-ui/core-sc/-/core-sc-11.1.5.tgz#d24266e8076da9488a6dcab56cfb941df82713be"
+  integrity sha512-Xh77YfY5Po36/nDTI4GRx0goHfTKSd2N34GbEtSIUUC6mIVezCs3piVXGNNxm64Eo8N9t3L7W5JORl7jkusT5g==
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@xstyled/styled-components" "^1.15.0"
+    "@xstyled/util" "^1.14.0"
+    polished "^3.4.2"
+    prop-desc "^1.0.0"
+    prop-types "^15.7.2"
+    react-flatten-children "^1.0.0"
+    react-merge-refs "^1.0.0"
+
 "@svgr/babel-plugin-add-jsx-attribute@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@svgr/babel-plugin-add-jsx-attribute/-/babel-plugin-add-jsx-attribute-4.2.0.tgz#dadcb6218503532d6884b210e7f3c502caaa44b1"
@@ -2905,6 +2919,24 @@
     "@babel/runtime" "^7.7.2"
     "@xstyled/system" "^1.15.1"
 
+"@xstyled/core@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@xstyled/core/-/core-1.16.0.tgz#ba261f35672a4a41920e820a9113c08d60b1fec3"
+  integrity sha512-3bRxIcrD6UhyCEbJo228MInStOmuhKs4WkbwIhSAsqjSqDbW3zkwKJqjYxcsn0r0HAGUE08+b5COqEVkjObpnA==
+  dependencies:
+    "@babel/runtime" "^7.8.3"
+    "@xstyled/system" "^1.16.0"
+
+"@xstyled/styled-components@^1.15.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@xstyled/styled-components/-/styled-components-1.16.0.tgz#c2da6f1fc1850e1f38f7cecbedb4cbe845fcac88"
+  integrity sha512-AytKNoXchXYeIoLMcM/elycW2/bTDNIeVpqgNJ+EpRZsEYG7vyikEcvKKy4q1J6WG+2zHFiPPuTiOGaDLAW8VA==
+  dependencies:
+    "@babel/runtime" "^7.8.3"
+    "@xstyled/core" "^1.16.0"
+    "@xstyled/system" "^1.16.0"
+    "@xstyled/util" "^1.16.0"
+
 "@xstyled/styled-components@^1.15.1":
   version "1.15.1"
   resolved "https://registry.yarnpkg.com/@xstyled/styled-components/-/styled-components-1.15.1.tgz#44cfeb9f8337bf0523469f00cbf158000455cd66"
@@ -2922,6 +2954,21 @@
   dependencies:
     "@babel/runtime" "^7.7.2"
     "@xstyled/util" "^1.15.1"
+
+"@xstyled/system@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@xstyled/system/-/system-1.16.0.tgz#6db4dfd27d0972d9ca8fceab1fb7ec10b16ce210"
+  integrity sha512-9Ro/GkScv8B2yiFtpkz2Atz9ayfuG3SLCvBcM6C7DHK0Jm+9BP0WVBDDB6GO9+bRD99ThN5labsW4Kw2vJUHHA==
+  dependencies:
+    "@babel/runtime" "^7.8.3"
+    "@xstyled/util" "^1.16.0"
+
+"@xstyled/util@^1.14.0", "@xstyled/util@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@xstyled/util/-/util-1.16.0.tgz#c0a4ef253d519a9148faacb3e407087feafc57f4"
+  integrity sha512-tyU3VQhnGgqeftSwruk/5+ndOSB+nTbYE77LNQZ0/dsOk48urZrLIBBBfz7jDOwx2zOtw68LpS1D4rtae9SjOA==
+  dependencies:
+    "@babel/runtime" "^7.8.3"
 
 "@xstyled/util@^1.15.1":
   version "1.15.1"
@@ -3880,6 +3927,11 @@ body-parser@1.19.0, body-parser@^1.18.2:
     qs "6.7.0"
     raw-body "2.4.0"
     type-is "~1.6.17"
+
+body-scroll-lock@^2.6.4:
+  version "2.6.4"
+  resolved "https://registry.yarnpkg.com/body-scroll-lock/-/body-scroll-lock-2.6.4.tgz#567abc60ef4d656a79156781771398ef40462e94"
+  integrity sha512-NP08WsovlmxEoZP9pdlqrE+AhNaivlTrz9a0FF37BQsnOrpN48eNqivKkE7SYpM9N+YIPjsdVzfLAUQDBm6OQw==
 
 bonjour@^3.5.0:
   version "3.5.0"
@@ -10504,12 +10556,24 @@ pnp-webpack-plugin@1.5.0:
   dependencies:
     ts-pnp "^1.1.2"
 
+polished@^3.4.2:
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-3.4.4.tgz#ac8cd6e704887398f3b802718f9d389b9ea4307b"
+  integrity sha512-x9PKeExyI9AhWrJP3Q57I1k7GInujjiVBJMPFmycj9hX1yCOo/X9eu9eZwxgOziiXge3WbFQ5XOmkzunOntBSA==
+  dependencies:
+    "@babel/runtime" "^7.6.3"
+
 polished@^3.4.3:
   version "3.4.3"
   resolved "https://registry.yarnpkg.com/polished/-/polished-3.4.3.tgz#9b2580a3ead4ef2e030265c3eccbc06a2b68a049"
   integrity sha512-EcA6RleHgFalVDZg5djztOyraWOkZcFSNwDCASkq6MZf68B+QlciKWRiNJn5sUDtwOLrk/xbqgvxoTfMjazvuw==
   dependencies:
     "@babel/runtime" "^7.6.3"
+
+popper.js@^1.16.0:
+  version "1.16.1"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
+  integrity sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==
 
 popsicle@10:
   version "10.0.1"
@@ -11354,6 +11418,11 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.3"
 
+prop-desc@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/prop-desc/-/prop-desc-1.0.0.tgz#215484ca17a282b16f4656fbcb71daf910c4a347"
+  integrity sha512-UoPCaSK2kDImDA9v45qGqLK9xURCyWtdPpeZkjJpgnlcf/y8rD9W7UnXFRFqLFxbsoO6TJ65CsYrZucTDKs/iw==
+
 prop-types@^15.5.4, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
@@ -11616,6 +11685,11 @@ react-final-form@^6.3.5:
     "@babel/runtime" "^7.8.3"
     ts-essentials "^5.0.0"
 
+react-flatten-children@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-flatten-children/-/react-flatten-children-1.0.0.tgz#9f29e3a54aa0e990c2b3a7e572dec5e225d59432"
+  integrity sha512-BSKnBi7MJadvfTjE07xzJoBNhlKYY8FfQUJ1e5dlFh4lMZf3i1AcldP/9d2hBeEtFeYleHCU8nYTuSzrz3ZwsA==
+
 react-helmet@^5.2.1:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-5.2.1.tgz#16a7192fdd09951f8e0fe22ffccbf9bb3e591ffa"
@@ -11630,6 +11704,11 @@ react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
   integrity sha512-rPCkf/mWBtKc97aLL9/txD8DZdemK0vkA3JMLShjlJB3Pj3s+lpf1KaBzMfQrAmhMQB0n1cU/SUGgKKBCe837Q==
+
+react-merge-refs@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-merge-refs/-/react-merge-refs-1.0.0.tgz#d6b297b9a62a266460a3c0d8b9d920731d8bbe63"
+  integrity sha512-VkvWuCR5VoTjb+VYUcOjkFo66HDv1Hw8VjKcwQtWr2lJnT8g7epRRyfz8+Zkl2WhwqNeqR0gIe0XYrBa9ePeXg==
 
 react-router-dom@^5.1.2:
   version "5.1.2"
@@ -11817,6 +11896,26 @@ readdirp@~3.3.0:
   integrity sha512-zz0pAkSPOXXm1viEwygWIPSPkcBYjW1xU5j/JBh5t9bGCJwa6f9+BJa6VaB2g+b55yVrmXzqkyLf4xaWYM0IkQ==
   dependencies:
     picomatch "^2.0.7"
+
+reakit-system@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/reakit-system/-/reakit-system-0.7.2.tgz#34e5b50f7668ef0a533fbe963a095b6374d48a5b"
+  integrity sha512-IY0NwVguy2Awp0DFRzsCBtSnn5gpHtfM3pvfi6Qcwv7Wkms6ZUWxsqFpwNJTMBfXqEBo9dDuIkpCBZivtezYzA==
+
+reakit-utils@^0.7.3:
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/reakit-utils/-/reakit-utils-0.7.3.tgz#91acb6360b30a802e5dae9bb6c9f7a9e9535ea6a"
+  integrity sha512-sQsgKYcn+OthBkvKz+TeHlYZq2SF5ZP9RutHg7O67GI+sdYqf0BVy6VeTe28TG4Vui6hoMheiMnZqhidOtN7EA==
+
+reakit@^1.0.0-beta.14:
+  version "1.0.0-beta.14"
+  resolved "https://registry.yarnpkg.com/reakit/-/reakit-1.0.0-beta.14.tgz#cea09f361e0062d2eb1515b5d1ba8ab0beeebeef"
+  integrity sha512-/KRlHT7tACx3PVvnX1DOuJxlWnfdfbdoEOJKdVPR8X4a9hkLPOZnLRaCNWKwHTVR7tAuVxo0K+ySsMuxWiGGYw==
+  dependencies:
+    body-scroll-lock "^2.6.4"
+    popper.js "^1.16.0"
+    reakit-system "^0.7.2"
+    reakit-utils "^0.7.3"
 
 realpath-native@^1.1.0:
   version "1.1.0"

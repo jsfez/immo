@@ -9,6 +9,7 @@ import GlobalStyle from './components/GlobalStyle'
 import Home from './containers/Home'
 
 import Login from './routes/Login'
+import InvestmentAdd from './routes/InvestmentAdd'
 import PropertyAdd from './routes/PropertyAdd'
 import PropertyEdit from './routes/PropertyEdit'
 import Register from './routes/Register'
@@ -29,6 +30,11 @@ function App() {
                 </Route>
                 <Route path={routePaths.getLogoutPath()}>
                   <Home logout />
+                </Route>
+
+                {/* Investment CRUD */}
+                <Route path={routePaths.getNewInvestmentPath()}>
+                  <InvestmentAdd />
                 </Route>
 
                 {/* Property CRUD */}
